@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notifikasi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list  *ngFor="let item of user">
+    <ion-item (click)="gotoDetail(item['id'])">
+      <ion-thumbnail slot="start">
+        <ion-img src="assets/person.png"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{item?.data?.deskripsi}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

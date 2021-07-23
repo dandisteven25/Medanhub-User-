@@ -1,0 +1,26 @@
+ion-toolbar {
+  --background: white;
+  text-align: center;
+  color: black;
+}
+
+ion-content {
+  --background: white;
+
+  ion-list {
+    --background: white;
+
+    ion-item {
+      --background: white;
+      padding-right: 10px;
+
+      ion-thumbnail {
+        --background: white;
+      }
+
+      ion-label {
+        color: black;
+      }
+    }
+  }
+}

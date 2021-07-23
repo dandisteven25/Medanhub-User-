@@ -1,0 +1,41 @@
+.fab {
+  position: fixed;
+  right: 15px;
+  top: 81%;
+
+  ion-fab-button {
+    --background: #219653;
+  }
+  ion-icon {
+    color: white;
+    position: absolute;
+    top: 10px;
+  }
+  p {
+    font-size: 12px;
+    position: absolute;
+    top: 20px;
+  }
+}
+
+ion-tab-button [aria-selected="true"] {
+  margin-left: -4px;
+  font-size: 11px;
+  color: grey;
+  border-top: 1px solid #219653;
+}
+
+ion-tabs {
+  font-family: "Times New Roman", Times, serif;
+
+  ion-tab-bar {
+    --background: white;
+    border-top: 1px solid rgb(219, 219, 219);
+    box-shadow: 5px 5px 5px 5px grey;
+  }
+}
+
+.lapor {
+  padding-left: 8px;
+  margin-bottom: 10px;
+}

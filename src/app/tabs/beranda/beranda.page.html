@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <img src="assets/logo.png" slot="start" class="logo">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ng-container *ngFor="let item of user" class="conteiner" >
+    <div class="conteiner-content" style="border-bottom: 1px solid rgb(155, 155, 155);" (click)="gotoDetail(item['id'])">
+      <div class="header">
+        <img src="assets/person.png" alt="Gambar User">
+        <div class="header-tengah">
+          <h5>{{item?.data?.username}}</h5>
+        </div>
+      </div>
+
+      <div class="img-conteiner">
+        <ion-img src="assets/jalan-rusak.jpg"></ion-img>
+      </div>
+      <div class="image-caption">
+        <ion-label>{{item?.data?.status}}</ion-label>
+      </div>
+
+      <div class="kat-des">
+        <div  class="kategori">
+          <ion-text>Kategori : {{item?.data?.nama_kategori}}</ion-text>
+        </div>
+        <div class="deskripsi">
+          <ion-text>Deskripsi : {{item?.data?.deskripsi}}</ion-text>
+        </div>
+        <div class="tanggal">
+          <ion-text style="font-size: 10px;">{{item?.data?.tanggal | date:'fullDate'}}</ion-text>
+        </div>
+
+      </div>
+    </div>
+  </ng-container>
+
+</ion-content>

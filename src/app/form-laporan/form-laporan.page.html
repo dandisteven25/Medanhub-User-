@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/beranda"></ion-icon>
+    <ion-title>Tambah Laporan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h4 class="h4Atas">Gambar</h4>
+  <div class="hasilFoto">
+    <img [src]="image" alt="Pengaduan">
+  </div>
+
+  <h4>Buat Deskripsi</h4>
+  <ion-item class="inputDeskripsi">
+    <ion-textarea (keyup)="search($event)" auto-grow="true" placeholder="Tulis sesuatu tentang laporan ini" [(ngModel)]="deskripsi"></ion-textarea>
+  </ion-item>
+
+  <h4>Tambahkan Lokasi</h4>
+  <ion-item class="inputLokasi">
+    <ion-label position="floating">Alamat</ion-label>
+    <ion-input type="text" [(ngModel)]="alamat"></ion-input>
+    <p slot="end" routerLink="/maps" style="color: #219653;">MAPS</p>
+  </ion-item>
+
+  <div class="kec-kel">
+    <ion-item class="inputLokasi">
+      <ion-label position="floating">Kecamatan</ion-label>
+      <ion-input type="text" [(ngModel)]="kecamatan"></ion-input>
+    </ion-item>
+
+    <ion-item class="inputLokasi">
+      <ion-label position="floating">Kelurahan</ion-label>
+      <ion-input type="text" [(ngModel)]="kelurahan"></ion-input>
+    </ion-item>
+  </div>
+  <ion-button fill="solid" (click)="kirimLaporan()"><ion-icon slot="start" name="send-outline"></ion-icon> Kirim</ion-button>
+
+</ion-content>

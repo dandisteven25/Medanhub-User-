@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/notifikasi"></ion-icon>
+    <ion-title>Tambah Detail Laporan</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card-content>
+      <div class="header">
+        <img src="assets/person.png" alt="Gambar User">
+        <div class="header-tengah">
+          <h5>{{user?.username}}</h5>
+          <p>{{user?.kecamatan}}</p>
+        </div>
+      </div>
+
+      <div class="img-conteiner">
+        <ion-img src="assets/jalan-rusak.jpg"></ion-img>
+      </div>
+      <div class="image-caption">
+        <ion-label>{{user?.status}}</ion-label>
+      </div>
+
+      <div class="kat-des">
+        <p class="kategori">Kategori : {{user?.nama_kategori}}</p>
+        <p class="kategori">Ditangani oleh : {{user?.nama_layanan}}</p>
+        <p class="deskripsi">{{user?.deskripsi}}</p>
+        <p style="font-size: 10px;">{{user?.tanggal | date:'fullDate'}}</p>
+      </div>
+    </ion-card-content>
+</ion-content>

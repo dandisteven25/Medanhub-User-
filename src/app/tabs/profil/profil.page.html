@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <img [src]="image2" alt="Missing Image" onError="src = '/assets/person2.png'" >
+
+  <h5>{{user?.fullname}}</h5>
+  <p>{{user?.username}}</p>
+
+  <h5 class="h5akun">Akun</h5>
+
+  <div class="edit">
+    <ion-item routerLink="/edit-profil">
+      <ion-icon slot="start" name="person-outline" class="icon-item"></ion-icon>
+      <ion-label>Edit Profil</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item routerLink="/pengaturan">
+      <ion-icon slot="start" name="settings-outline" class="icon-item"></ion-icon>
+      <ion-label>Pengaturan</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item routerLink="/tentang-mh">
+      <ion-icon slot="start" name="information-circle-outline" class="icon-item"></ion-icon>
+      <ion-label>Tentang MedanHub</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="signOut()">
+      <ion-icon slot="start" name="log-out-outline" class="icon-item"></ion-icon>
+      <ion-label>Keluar</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </div>
+
+</ion-content>

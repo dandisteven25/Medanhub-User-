@@ -1,0 +1,37 @@
+ion-toolbar{
+  --background:white;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+  ion-icon{
+    margin-left: 15px;
+    margin-right: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  ion-title{
+    margin-left: 10px;
+    padding-left: 0;
+  }
+}
+ion-header{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+ion-content{
+  text-align: center;
+
+  img{
+    width: 170px;
+    height: 77px;
+    margin-top: 10%;
+    margin-bottom: 5px;
+  }
+
+  p{
+    font-weight: bold;
+    margin-top: 0;
+  }
+}

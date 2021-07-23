@@ -1,0 +1,99 @@
+ion-toolbar {
+  --background: white;
+  height: 70px;
+  border-bottom: 1px solid rgb(185, 185, 185);
+  color: black;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.logo {
+  width: 100px;
+  height: 45px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+ion-content {
+  --background: rgb(241, 235, 235);
+  margin: 0;
+  padding: 0;
+
+  .conteiner-content {
+    background-color: white;
+    padding: 0;
+
+    .header {
+      width: 100%;
+      padding: 0;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      margin-left: 10px;
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .header-tengah {
+        margin: 8px 10px;
+        h5 {
+          color: black;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .img-conteiner {
+      width: 100%;
+      height: 230px;
+
+      ion-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .image-caption {
+      background: #219653;
+      text-align: center;
+      width: 100%;
+      height: auto;
+
+      ion-label {
+        color: white;
+      }
+    }
+
+    .kat-des {
+      width: 90%;
+      margin: 0 auto;
+      padding: 0;
+      color: black;
+
+      .kategori {
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+
+      .deskripsi {
+        width: 100%;
+        max-height: 40px;
+        overflow: hidden;
+        margin: 7px 0;
+        padding: 0;
+      }
+      .tanggal {
+        margin-top: 0;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/profil"></ion-icon>
+    <ion-title>Edit Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img [src]="photo" alt="Missing Image" onError="src = '/assets/person2.png'">
+
+
+  <ion-grid fixed class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col>
+        <ion-icon (click)="getGallery()" class="button-foto" name="image-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nama Lengkap</ion-label>
+      <ion-input type="text" [(ngModel)]="fullname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username" class="ion-text-lowercase" autocomplete="nickname"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="updateUser()">Simpan</ion-button>
+</ion-content>

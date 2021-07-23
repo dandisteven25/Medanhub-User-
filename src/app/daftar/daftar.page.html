@@ -1,0 +1,36 @@
+<div class="logo">
+  <img src="assets/logo2.png">
+</div>
+
+
+<div class="content">
+  <h4><b>Daftar</b></h4>
+
+  <div class="inputDaftar ion-padding">
+
+    <ion-item class="input">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username" class="ion-text-lowercase" autocomplete="username" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email" class="ion-text-lowercase" autocomplete="email" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input">
+      <ion-label position="floating">Phone Number</ion-label>
+      <ion-input type="number" [(ngModel)]="phonenumber" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" required></ion-input>
+    </ion-item>
+
+    <ion-button (click)="signup()">DAFTAR</ion-button>
+
+    <p style="color: black;">Sudah Punya Akun?<a href="/login" class="login">Masuk</a></p>
+  </div>
+</div>
+

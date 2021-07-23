@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/profil"></ion-icon>
+    <ion-title>Pengaturan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h5 style="margin-top: 0;">Login dan Keamanan</h5>
+
+  <p>Nama Pengguna</p>
+  <ion-item lines="inset">
+    <ion-label>{{user?.fullname}}</ion-label>
+  </ion-item>
+
+  <p>No Hp</p>
+  <ion-item lines="inset">
+    <ion-label>{{user?.phonenumber}}</ion-label>
+  </ion-item>
+
+  <p>Email</p>
+  <ion-item lines="inset">
+    <ion-label>{{user?.email}}</ion-label>
+  </ion-item>
+
+  <ion-item routerLink="/ubah-kata-sandi">
+    <ion-label style="color:black;">Kata Sandi</ion-label>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+  <h5 style="margin-top: 30px;">Lanjutan</h5>
+  <ion-item (click)="deleteAccount()">
+    <ion-label style="color: black;">Hapus Akun</ion-label>
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+</ion-content>
