@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class DatabaseService {
 
   collectionName = 'user';
-  laporanId=""
+  laporanId = ""
 
   constructor(
     private loadingService: LoadingService,
@@ -26,17 +26,17 @@ export class DatabaseService {
     return this.firestore.collection("laporan").add(record);
   }
 
-  getLaporanUser(){
+  getLaporanUser() {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan").snapshotChanges()
+    return this.firestore.collection("laporan", ref => ref.orderBy("tanggal", "desc")).snapshotChanges()
   }
 
-  getLaporan(id){
+  getLaporan(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan", ref=> ref.where("userId","==",id)).snapshotChanges()
+    return this.firestore.collection("laporan", ref => ref.where("userId", "==", id)).snapshotChanges()
   }
 
-  getDetailLaporan(id){
+  getDetailLaporan(id) {
     this.loadingService.presentLoading();
     return this.firestore.collection("laporan").doc(id).valueChanges()
   }
@@ -45,11 +45,11 @@ export class DatabaseService {
     return this.firestore.collection("user").snapshotChanges();
   }
 
-  setUser(id,user){
+  setUser(id, user) {
     return this.firestore.collection(this.collectionName).doc(id).set(user);
   }
 
-  getUser(id){
+  getUser(id) {
     this.loadingService.presentLoading();
     return this.firestore.collection(this.collectionName).doc(id).snapshotChanges();
   }

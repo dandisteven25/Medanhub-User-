@@ -5,11 +5,12 @@
 </ion-header>
 
 <ion-content>
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ng-container *ngFor="let item of user" class="conteiner" >
-    <div class="conteiner-content" style="border-bottom: 1px solid rgb(155, 155, 155);" (click)="gotoDetail(item['id'])">
+  <ng-container *ngFor="let item of user" class="conteiner">
+    <div class="conteiner-content" style="border-bottom: 1px solid rgb(155, 155, 155);"
+      (click)="gotoDetail(item['id'])">
       <div class="header">
         <img src="assets/person.png" alt="Gambar User">
         <div class="header-tengah">
@@ -25,11 +26,11 @@
       </div>
 
       <div class="kat-des">
-        <div  class="kategori">
+        <div class="kategori">
           <ion-text>Kategori : {{item?.data?.nama_kategori}}</ion-text>
         </div>
         <div class="deskripsi">
-          <ion-text>Deskripsi : {{item?.data?.deskripsi}}</ion-text>
+          <ion-text>{{item?.data?.deskripsi}}</ion-text>
         </div>
         <div class="tanggal">
           <ion-text style="font-size: 10px;">{{item?.data?.tanggal | date:'fullDate'}}</ion-text>

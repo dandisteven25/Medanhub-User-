@@ -20,15 +20,15 @@ export class FormLaporanPage implements OnInit {
   private static readonly TYPE = '_doc';
   private static readonly SIZE = 10;
 
-  image= ""
-  deskripsi= ""
-  alamat= ""
-  kelurahan= ""
-  kecamatan= ""
-  kategori= []
-  nama_layanan=[]
-  username2=""
-  status=""
+  image = ""
+  deskripsi = ""
+  alamat = ""
+  kelurahan = ""
+  kecamatan = ""
+  kategori = []
+  nama_layanan = []
+  username2 = ""
+  status = ""
   idUser = ""
 
   user
@@ -44,21 +44,21 @@ export class FormLaporanPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private es: ElasticsearchService
-    ) {this.queryText = ''; }
+  ) { this.queryText = ''; }
 
   ngOnInit() {
 
     console.log(this.authService.userData)
-    try{
-      this.authService.checkAuthState().subscribe(data=>{
-        this.dbService.getUser(data.uid).subscribe((data)=>{
+    try {
+      this.authService.checkAuthState().subscribe(data => {
+        this.dbService.getUser(data.uid).subscribe((data) => {
           this.user = data.payload.data()
           console.log(this.user)
-          this.username2= this.user["username"]
+          this.username2 = this.user["username"]
           console.log(`username in form-laporan ${this.username2}`)
         })
       })
-    }catch(e){console.log(e)};
+    } catch (e) { console.log(e) };
 
     this.image = this.dataService.image
     console.log(`image in form-laporan ${this.image}`)
@@ -104,7 +104,7 @@ export class FormLaporanPage implements OnInit {
     this.lastKeypress = $event.timeStamp;
   }
 
-  kirimLaporan(){
+  kirimLaporan() {
     this.dbService.addLaporan(
       {
         "userId": this.authService.userData.uid,
@@ -112,8 +112,8 @@ export class FormLaporanPage implements OnInit {
         "tanggal": Date.now(),
         "nama_kategori": this.kategori,
         "nama_layanan": this.nama_layanan,
-        "status":this.status="Menunggu Penanganan",
-        "deskripsi":this.deskripsi, "alamat":this.alamat, "kelurahan":this.kelurahan, "kecamatan":this.kecamatan
+        "status": this.status = "Menunggu Penanganan",
+        "deskripsi": this.deskripsi, "alamat": this.alamat, "kelurahan": this.kelurahan, "kecamatan": this.kecamatan
       }
 
     )
