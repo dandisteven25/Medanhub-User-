@@ -5,8 +5,10 @@ import { DatabaseService } from 'src/app/services/database/database.service';
 import { DataserviceService } from '../services/dataservice.service';
 import { ElasticsearchService } from '../services/elasticsearch.service';
 import { CustomerSource } from 'src/app/customer';
-import { sastrawijs } from 'sastrawijs';
-import { stopword } from 'stopword';
+//import { sastrawijs } from 'node_modules/sastrawijs';
+//import { stopword } from 'node_modules/stopword';
+import { Stemmer, Tokenizer } from 'sastrawijs';
+import * as sw from 'stopword';
 
 
 @Component({
@@ -30,6 +32,7 @@ export class FormLaporanPage implements OnInit {
   username2 = ""
   status = ""
   idUser = ""
+  //indexing = ""
 
   user
 
@@ -44,7 +47,21 @@ export class FormLaporanPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private es: ElasticsearchService
-  ) { this.queryText = ''; }
+  ) {
+    // var sentence =
+    //   "Perekonomian Indonesia sedang dalam pertumbuhan yang membanggakan";
+    // var stemmed = [];
+    // var stemmer = new Stemmer();
+    // var tokenizer = new Tokenizer();
+    // var words = tokenizer.tokenize(sentence);
+    // for (var word of words) {
+    //   stemmed.push(stemmer.stem(word));
+    // }
+    // const oldString = 'a really Interesting string with some words'.split(' ')
+    // const newString = sw.removeStopwords(oldString)
+    this.queryText = "";
+    // console.log('stopwords ' + JSON.stringify(newString));
+  }
 
   ngOnInit() {
 
@@ -80,7 +97,18 @@ export class FormLaporanPage implements OnInit {
 
   search($event) {
     if ($event.timeStamp - this.lastKeypress > 100) {
-      this.queryText = $event.target.value;
+      this.deskripsi = $event.target.value;
+      var stemmed = [];
+      var stemmer = new Stemmer();
+      var tokenizer = new Tokenizer();
+      var words = tokenizer.tokenize(this.deskripsi);
+      for (var word of words) {
+        stemmed.push(stemmer.stem(word));
+      }
+      var desSastrawi = stemmed.join(' ');
+      var desBersih = sw.removeStopwords(desSastrawi.split(' '), sw.id);
+      // console.log('deskripsi stem' + desBersih);
+      this.queryText = desBersih.join(' ');
       this.es.fullTextSearch(
         FormLaporanPage.INDEX,
         FormLaporanPage.TYPE,
@@ -105,15 +133,22 @@ export class FormLaporanPage implements OnInit {
   }
 
   kirimLaporan() {
+    if (this.kategori.length === 0) {
+      this.status = "Tidak Dapat Ditangani";
+    } else {
+      this.status = "Menunggu Penanganan";
+    };
     this.dbService.addLaporan(
       {
         "userId": this.authService.userData.uid,
+        "fullname": this.user.fullname,
         "username": this.username2,
         "tanggal": Date.now(),
         "nama_kategori": this.kategori,
         "nama_layanan": this.nama_layanan,
-        "status": this.status = "Menunggu Penanganan",
-        "deskripsi": this.deskripsi, "alamat": this.alamat, "kelurahan": this.kelurahan, "kecamatan": this.kecamatan
+        "status": this.status,
+        "deskripsi": this.deskripsi, "alamat": this.alamat, "kelurahan": this.kelurahan, "kecamatan": this.kecamatan,
+        "desBersih": this.queryText,
       }
 
     )
