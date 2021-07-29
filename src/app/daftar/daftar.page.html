@@ -14,12 +14,17 @@
     </ion-item>
 
     <ion-item class="input">
+      <ion-label position="floating">Nama Lengkap</ion-label>
+      <ion-input type="text" [(ngModel)]="fullname" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" [(ngModel)]="email" class="ion-text-lowercase" autocomplete="email" required></ion-input>
     </ion-item>
 
     <ion-item class="input">
-      <ion-label position="floating">Phone Number</ion-label>
+      <ion-label position="floating">Nomor Handphone</ion-label>
       <ion-input type="number" [(ngModel)]="phonenumber" required></ion-input>
     </ion-item>
 

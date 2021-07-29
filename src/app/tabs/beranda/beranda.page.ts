@@ -44,7 +44,7 @@ export class BerandaPage implements OnInit {
 
   gotoDetail(idLaporan){
     this.dbService.laporanId= idLaporan
-    this.navCtrl.navigateForward("/detail")
+    this.navCtrl.navigateForward("/detail-laporan")
 }
 
   doRefresh(event) {

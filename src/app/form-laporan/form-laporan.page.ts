@@ -30,6 +30,7 @@ export class FormLaporanPage implements OnInit {
   kategori = []
   nama_layanan = []
   username2 = ""
+  fullname2 = ""
   status = ""
   idUser = ""
   //indexing = ""
@@ -71,8 +72,10 @@ export class FormLaporanPage implements OnInit {
         this.dbService.getUser(data.uid).subscribe((data) => {
           this.user = data.payload.data()
           console.log(this.user)
-          this.username2 = this.user["username"]
-          console.log(`username in form-laporan ${this.username2}`)
+          this.username2 = this.user.username
+          this.fullname2 = this.user.fullname
+          console.log(`Username : ${this.user.username}`)
+          console.log(`Fullname : ${this.user.fullname}`)
         })
       })
     } catch (e) { console.log(e) };
@@ -141,7 +144,7 @@ export class FormLaporanPage implements OnInit {
     this.dbService.addLaporan(
       {
         "userId": this.authService.userData.uid,
-        "fullname": this.user.fullname,
+        "fullname": this.fullname2,
         "username": this.username2,
         "tanggal": Date.now(),
         "nama_kategori": this.kategori,
@@ -154,6 +157,7 @@ export class FormLaporanPage implements OnInit {
     )
     this.navCtrl.navigateRoot("/home/beranda");
     this.idUser = this.authService.userData.uid;
+
   }
 
 }

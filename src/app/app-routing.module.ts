@@ -59,6 +59,10 @@ const routes: Routes = [
   },
   { path: 'show', component: ShowCustomersComponent },
   { path: 'search', component: SearchCustomersComponent },
+  {
+    path: 'detail-laporan',
+    loadChildren: () => import('./detail-laporan/detail-laporan.module').then( m => m.DetailLaporanPageModule)
+  },
 
 ];
 

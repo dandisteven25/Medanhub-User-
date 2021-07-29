@@ -1,22 +1,22 @@
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import '@firebase/auth';
 
+
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.page.html',
-  styleUrls: ['./detail.page.scss'],
+  selector: 'app-detail-laporan',
+  templateUrl: './detail-laporan.page.html',
+  styleUrls: ['./detail-laporan.page.scss'],
 })
-export class DetailPage implements OnInit {
+export class DetailLaporanPage implements OnInit {
 
   user
 
   constructor(
     private dbService: DatabaseService,
     private alert: AlertController
-    )
-    { }
+  ) { }
 
   ngOnInit() {
     let idLaporan = this.dbService.laporanId
