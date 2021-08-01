@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { Client } from 'elasticsearch-browser';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ElasticsearchService {
-
   private client: Client;
 
   private queryalldocs = {
-    'query': {
-      'match_all': {}
+    query: {
+      match_all: {},
     },
-    'sort': "asc"
+    sort: 'asc',
   };
 
   constructor() {
@@ -24,14 +23,14 @@ export class ElasticsearchService {
   private connect() {
     this.client = new Client({
       host: 'localhost:9200',
-      log: 'trace'
+      log: 'trace',
     });
   }
 
   isAvailable(): any {
     return this.client.ping({
       requestTimeout: Infinity,
-      body: 'hello medanhub'
+      body: 'hello medanhub',
     });
   }
 
@@ -44,7 +43,7 @@ export class ElasticsearchService {
       index: _index,
       type: _type,
       body: this.queryalldocs,
-      filterPath: ['hits.hits._source']
+      filterPath: ['hits.hits._source'],
     });
   }
 
@@ -56,17 +55,17 @@ export class ElasticsearchService {
       filterPath: ['hits.hits._source', 'hits.total', '_scroll_id'],
       body: {
         //'size': _size,
-        'query': {
-          'match_all': {
+        query: {
+          match_all: {
             // 'deskripsi': "asap"
-          }
+          },
         },
-        'sort': {
-          'id': "asc"
+        sort: {
+          id: 'asc',
         },
-        'size': 1
+        size: 1,
       },
-      '_source': ['id', 'nama_kategori', 'nama_layanan', 'deskripsi']
+      _source: ['id', 'nama_kategori', 'nama_layanan', 'deskripsi'],
     });
   }
 
@@ -74,7 +73,7 @@ export class ElasticsearchService {
     return this.client.scroll({
       scrollId: scroll_id,
       scroll: '1m',
-      filterPath: ['hits.hits._source', 'hits.total', '_scroll_id']
+      filterPath: ['hits.hits._source', 'hits.total', '_scroll_id'],
     });
   }
 
@@ -84,14 +83,14 @@ export class ElasticsearchService {
       type: _type,
       filterPath: ['hits.hits._source', 'hits.total', '_scroll_id'],
       body: {
-        'query': {
-          'match': {
+        query: {
+          match: {
             [_field]: _queryText,
-          }
+          },
         },
-        'size': 1,
+        size: 1,
       },
-      '_source': ['id', 'nama_kategori', 'nama_layanan', 'deskripsi']
+      _source: ['id', 'nama_kategori', 'nama_layanan', 'deskripsi'],
     });
   }
 }
