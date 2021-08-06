@@ -1,9 +1,7 @@
 import { NavController, AlertController } from '@ionic/angular';
 import { LoadingService } from './../../services/loading.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database/database.service';
-import firebase from '@firebase/app';
 import '@firebase/auth';
 
 @Component({
@@ -18,7 +16,6 @@ export class BerandaPage implements OnInit {
   constructor(
     private loadingService: LoadingService,
     private dbService: DatabaseService,
-    private authService: AuthService,
     private navCtrl: NavController,
     private alert: AlertController
     ){}
@@ -31,7 +28,7 @@ export class BerandaPage implements OnInit {
     this.dbService.getLaporanUser().subscribe(data=>{
       this.loadingService.onDismiss
       console.log("Semua Data Laporan User")
-      this.user = data.map(user=> user.payload.doc.data())
+      // this.user = data.map(user=> user.payload.doc.data())
       console.log(this.user)
       this.user= data.map(item=> {
         return {
@@ -63,8 +60,3 @@ export class BerandaPage implements OnInit {
     await alert.present()
   }
 }
-
-
-  // slidesOptions = {
-  //   slidePerView: 1
-  // }

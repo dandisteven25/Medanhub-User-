@@ -47,5 +47,4 @@ export class NotifikasiPage implements OnInit {
       event.target.complete();
     },1000);
   }
-
 }

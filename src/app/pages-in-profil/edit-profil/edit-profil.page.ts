@@ -1,10 +1,9 @@
-import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import { NavController, AlertController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { FileSizePipe } from 'src/app/filesize.pipe';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-edit-profil',
@@ -22,7 +21,7 @@ export class EditProfilPage implements OnInit {
     private dbService: DatabaseService,
     private authService: AuthService,
     private navCtrl: NavController,
-    private afStorage: AngularFireStorageModule
+    private afStorage: AngularFireStorage
     ) { }
 
   ngOnInit() {
@@ -47,10 +46,17 @@ export class EditProfilPage implements OnInit {
       // Handle error
       console.log(err);
      });
+
+
   }
 
-  updateUser(){
-    this.dbService.update_user(this.authService.userData.uid, {"fullname":this.fullname,"username":this.username})
+
+  async updateUser(){
+    const ref=this.afStorage.ref(`/images/${Date.now()}.jpeg`)
+    await ref.putString(this.photo.substr(23),'base64',{ contentType: 'image/jpeg' })
+    const photoProfil=await ref.getDownloadURL().toPromise()
+
+    this.dbService.update_user(this.authService.userData.uid, {fullname:this.fullname, username:this.username, fotoProfil: photoProfil})
     this.showAlert("Berhasil Update Profil")
     console.log("Berhasil Update Data")
     this.navCtrl.navigateRoot("/home/profil")

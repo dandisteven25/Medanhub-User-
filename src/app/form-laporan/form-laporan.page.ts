@@ -9,6 +9,14 @@ import { CustomerSource } from 'src/app/customer';
 //import { stopword } from 'node_modules/stopword';
 import { Stemmer, Tokenizer } from 'sastrawijs';
 import * as sw from 'stopword';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+
+export interface FILE {
+  name: string;
+  filepath: string;
+  size: number;
+}
 
 @Component({
   selector: 'app-form-laporan',
@@ -19,6 +27,7 @@ export class FormLaporanPage implements OnInit {
   private static readonly INDEX = 'kategori';
   private static readonly TYPE = '_doc';
   private static readonly SIZE = 10;
+
 
   image = '';
   deskripsi = '';
@@ -45,8 +54,11 @@ export class FormLaporanPage implements OnInit {
     private dbService: DatabaseService,
     private authService: AuthService,
     private navCtrl: NavController,
-    private es: ElasticsearchService
+    private es: ElasticsearchService,
+    private afStorage: AngularFireStorage
   ) {
+
+
     // var sentence =
     //   "Perekonomian Indonesia sedang dalam pertumbuhan yang membanggakan";
     // var stemmed = [];
@@ -147,12 +159,17 @@ export class FormLaporanPage implements OnInit {
     this.lastKeypress = $event.timeStamp;
   }
 
-  kirimLaporan() {
+  async kirimLaporan() {
     if (this.kategori.length === 0) {
       this.status = 'Tidak Dapat Ditangani';
     } else {
       this.status = 'Menunggu Penanganan';
     }
+
+    const ref=this.afStorage.ref(`/images/${Date.now()}.jpeg`)
+    await ref.putString(this.dataService.image.substr(23),'base64',{ contentType: 'image/jpeg' })
+    const photoLaporan=await ref.getDownloadURL().toPromise()
+
     this.dbService.addLaporan({
       userId: this.authService.userData.uid,
       fullname: this.fullname2,
@@ -166,8 +183,12 @@ export class FormLaporanPage implements OnInit {
       kelurahan: this.kelurahan,
       kecamatan: this.kecamatan,
       desBersih: this.queryText,
+      photo: photoLaporan
     });
     this.navCtrl.navigateRoot('/home/beranda');
     this.idUser = this.authService.userData.uid;
   }
+
+
+
 }

@@ -2,7 +2,6 @@ import { LoadingService } from './../loading.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -66,5 +65,5 @@ export class DatabaseService {
   delete_record(recordId) {
     this.firestore.doc("laporan" + recordId).delete();
   }
-
 }
+
