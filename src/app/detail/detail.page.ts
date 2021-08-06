@@ -2,6 +2,7 @@ import { AlertController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import '@firebase/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-detail',
@@ -9,38 +10,37 @@ import '@firebase/auth';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-
-  user
+  user;
 
   constructor(
     private dbService: DatabaseService,
     private alert: AlertController,
-    private navCtrl: NavController
-    )
-    { }
+    private navCtrl: NavController,
+    private firestore: AngularFirestore
+  ) {}
 
   ngOnInit() {
-    let idLaporan = this.dbService.laporanId
-    this.dbService.getDetailLaporan(idLaporan).subscribe(data=>{
-      console.log(data)
-      this.user=data
-    })
-  }
-
-  hapusLaporan(){
-    let id_laporan = this.dbService.laporanId
-    this.dbService.delete_record(id_laporan)
-    this.showAlert("Berhasil Menghapus Laporan")
-    this.navCtrl.navigateRoot('/home/notifikasi')
-    console.log("Berhasil menghapus laporan")
-    console.log(id_laporan)
-  }
-
-  async showAlert(message:string){
-    const alert = await this.alert.create({
-      message
+    let idLaporan = this.dbService.laporanId;
+    this.dbService.getDetailLaporan(idLaporan).subscribe((data) => {
+      console.log(data);
+      this.user = data;
     });
-    await alert.present()
   }
 
+  hapusLaporan() {
+    let id_laporan = this.dbService.laporanId;
+    // this.dbService.delete_record(id_laporan);
+    this.firestore.collection('laporan').doc(id_laporan).delete();
+    this.showAlert('Berhasil Menghapus Laporan');
+    this.navCtrl.navigateRoot('/home/notifikasi');
+    console.log('Berhasil menghapus laporan');
+    console.log(id_laporan);
+  }
+
+  async showAlert(message: string) {
+    const alert = await this.alert.create({
+      message,
+    });
+    await alert.present();
+  }
 }

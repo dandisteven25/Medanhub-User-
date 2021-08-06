@@ -71,6 +71,6 @@ export class DatabaseService {
   }
 
   delete_record(recordId) {
-    this.firestore.doc("laporan /" + recordId).delete();
+    this.firestore.doc('laporan /' + recordId).delete();
   }
 }
