@@ -40,6 +40,7 @@ export class FormLaporanPage implements OnInit {
   fullname2 = '';
   status = '';
   idUser = '';
+  fotoProfil2 = '';
   //indexing = ""
 
   user;
@@ -83,8 +84,10 @@ export class FormLaporanPage implements OnInit {
           console.log(this.user);
           this.username2 = this.user.username;
           this.fullname2 = this.user.fullname;
+          this.fotoProfil2 = this.user.fotoProfil;
           console.log(`Username : ${this.user.username}`);
           console.log(`Fullname : ${this.user.fullname}`);
+          console.log(`Foto Profil : ${this.user.fotoProfil}`)
         });
       });
     } catch (e) {
@@ -183,7 +186,8 @@ export class FormLaporanPage implements OnInit {
       kelurahan: this.kelurahan,
       kecamatan: this.kecamatan,
       desBersih: this.queryText,
-      photo: photoLaporan
+      photo: photoLaporan,
+      fotoUser: this.fotoProfil2
     });
     this.navCtrl.navigateRoot('/home/beranda');
     this.idUser = this.authService.userData.uid;

@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card-content>
     <div class="header">
-      <img src="assets/person.png" alt="Gambar User">
+      <img [src]="user?.fotoUser" alt="Gambar User">
       <div class="header-tengah">
         <h5>{{user?.username}}</h5>
         <p>{{user?.kecamatan}}</p>
