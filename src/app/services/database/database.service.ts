@@ -3,17 +3,16 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DatabaseService {
-
   collectionName = 'user';
-  laporanId = ""
+  laporanId = '';
 
   constructor(
     private loadingService: LoadingService,
-    private firestore: AngularFirestore,
-  ) { }
+    private firestore: AngularFirestore
+  ) {}
 
   create_user(record) {
     this.loadingService.presentLoading();
@@ -22,26 +21,32 @@ export class DatabaseService {
 
   addLaporan(record) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan").add(record);
+    return this.firestore.collection('laporan').add(record);
   }
 
   getLaporanUser() {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan", ref => ref.orderBy("tanggal", "desc")).snapshotChanges()
+    return this.firestore
+      .collection('laporan', (ref) => ref.orderBy('tanggal', 'desc'))
+      .snapshotChanges();
   }
 
   getLaporan(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan", ref => ref.where("userId", "==", id)).snapshotChanges()
+    return this.firestore
+      .collection('laporan', (ref) =>
+        ref.where('userId', '==', id).orderBy('tanggal', 'desc')
+      )
+      .snapshotChanges();
   }
 
   getDetailLaporan(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan").doc(id).valueChanges()
+    return this.firestore.collection('laporan').doc(id).valueChanges();
   }
 
   read_user() {
-    return this.firestore.collection("user").snapshotChanges();
+    return this.firestore.collection('user').snapshotChanges();
   }
 
   setUser(id, user) {
@@ -50,7 +55,10 @@ export class DatabaseService {
 
   getUser(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection(this.collectionName).doc(id).snapshotChanges();
+    return this.firestore
+      .collection(this.collectionName)
+      .doc(id)
+      .snapshotChanges();
   }
 
   update_user(recordID, record) {
@@ -65,6 +73,4 @@ export class DatabaseService {
   delete_record(recordId) {
     this.firestore.doc("laporan /" + recordId).delete();
   }
-
 }
-
