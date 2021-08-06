@@ -16,6 +16,10 @@ ion-content {
 
       ion-thumbnail {
         --background: white;
+
+        ion-img {
+          border-radius: 50%;
+        }
       }
 
       ion-label {

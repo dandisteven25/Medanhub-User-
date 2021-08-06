@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import firebase from '@firebase/app';
 import '@firebase/auth';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';

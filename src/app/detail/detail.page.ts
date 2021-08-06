@@ -1,4 +1,4 @@
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import '@firebase/auth';
@@ -14,7 +14,8 @@ export class DetailPage implements OnInit {
 
   constructor(
     private dbService: DatabaseService,
-    private alert: AlertController
+    private alert: AlertController,
+    private navCtrl: NavController
     )
     { }
 
@@ -24,6 +25,15 @@ export class DetailPage implements OnInit {
       console.log(data)
       this.user=data
     })
+  }
+
+  hapusLaporan(){
+    let id_laporan = this.dbService.laporanId
+    this.dbService.delete_record(id_laporan)
+    this.showAlert("Berhasil Menghapus Laporan")
+    this.navCtrl.navigateRoot('/home/notifikasi')
+    console.log("Berhasil menghapus laporan")
+    console.log(id_laporan)
   }
 
   async showAlert(message:string){
