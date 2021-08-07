@@ -7,8 +7,10 @@ import { ElasticsearchService } from '../services/elasticsearch.service';
 import { CustomerSource } from 'src/app/customer';
 import { Stemmer, Tokenizer } from 'sastrawijs';
 import * as sw from 'stopword';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-
+import {
+  AngularFireStorage,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-form-laporan',
@@ -19,7 +21,6 @@ export class FormLaporanPage implements OnInit {
   private static readonly INDEX = 'kategori';
   private static readonly TYPE = '_doc';
   private static readonly SIZE = 10;
-
 
   image = '';
   deskripsi = '';
@@ -33,9 +34,10 @@ export class FormLaporanPage implements OnInit {
   status = '';
   idUser = '';
   fotoProfil2 = '';
-  //indexing = ""
 
   user;
+
+  bobot;
 
   customerSources: CustomerSource[];
   private queryText = '';
@@ -50,8 +52,6 @@ export class FormLaporanPage implements OnInit {
     private es: ElasticsearchService,
     private afStorage: AngularFireStorage
   ) {
-
-
     // var sentence =
     //   "Perekonomian Indonesia sedang dalam pertumbuhan yang membanggakan";
     // var stemmed = [];
@@ -79,7 +79,7 @@ export class FormLaporanPage implements OnInit {
           this.fotoProfil2 = this.user.fotoProfil;
           console.log(`Username : ${this.user.username}`);
           console.log(`Fullname : ${this.user.fullname}`);
-          console.log(`Foto Profil : ${this.user.fotoProfil}`)
+          console.log(`Foto Profil : ${this.user.fotoProfil}`);
         });
       });
     } catch (e) {
@@ -140,6 +140,7 @@ export class FormLaporanPage implements OnInit {
             this.customerSources = response.hits.hits[0]._source.nama_layanan;
             this.nama_layanan = this.customerSources;
             console.log(this.nama_layanan);
+            this.bobot = response.hits.hits[0]._score;
 
             console.log(response);
           },
@@ -161,9 +162,11 @@ export class FormLaporanPage implements OnInit {
       this.status = 'Menunggu Penanganan';
     }
 
-    const ref=this.afStorage.ref(`/images/${Date.now()}.jpeg`)
-    await ref.putString(this.dataService.image.substr(23),'base64',{ contentType: 'image/jpeg' })
-    const photoLaporan=await ref.getDownloadURL().toPromise()
+    const ref = this.afStorage.ref(`/images/${Date.now()}.jpeg`);
+    await ref.putString(this.dataService.image.substr(23), 'base64', {
+      contentType: 'image/jpeg',
+    });
+    const photoLaporan = await ref.getDownloadURL().toPromise();
 
     this.dbService.addLaporan({
       userId: this.authService.userData.uid,
@@ -178,8 +181,9 @@ export class FormLaporanPage implements OnInit {
       kelurahan: this.kelurahan,
       kecamatan: this.kecamatan,
       desBersih: this.queryText,
+      bobot: this.bobot,
       photo: photoLaporan,
-      fotoUser: this.fotoProfil2
+      fotoUser: this.fotoProfil2,
     });
     this.navCtrl.navigateRoot('/home/beranda');
     this.idUser = this.authService.userData.uid;

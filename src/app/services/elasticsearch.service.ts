@@ -22,8 +22,8 @@ export class ElasticsearchService {
 
   private connect() {
     this.client = new Client({
-      host: 'localhost:9200',
-      // host: '10.110.155.232:9200',
+      // host: 'localhost:9200',
+      host: '10.110.155.232:9200',
       log: 'trace',
     });
   }
@@ -82,7 +82,12 @@ export class ElasticsearchService {
     return this.client.search({
       index: _index,
       type: _type,
-      filterPath: ['hits.hits._source', 'hits.total', '_scroll_id'],
+      filterPath: [
+        'hits.hits._source',
+        'hits.total',
+        '_scroll_id',
+        'hits.hits._score',
+      ],
       body: {
         query: {
           match: {
