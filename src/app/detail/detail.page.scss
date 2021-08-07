@@ -82,16 +82,10 @@ ion-content {
       color: black;
     }
   }
-
-  .button {
+  .button-hapus {
     width: 100%;
-    height: auto;
     margin-top: 40px;
     margin-bottom: 40px;
-    text-align: center;
-
-    .button-hapus {
-      width: 90%;
-    }
+    margin-left: 0;
   }
 }

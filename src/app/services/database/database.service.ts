@@ -69,8 +69,4 @@ export class DatabaseService {
   delete_user(id) {
     return this.firestore.doc(this.collectionName + '/' + id).delete();
   }
-
-  delete_record(recordId) {
-    this.firestore.doc('laporan /' + recordId).delete();
-  }
 }

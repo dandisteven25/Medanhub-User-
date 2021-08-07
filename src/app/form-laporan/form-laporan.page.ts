@@ -5,18 +5,10 @@ import { DatabaseService } from 'src/app/services/database/database.service';
 import { DataserviceService } from '../services/dataservice.service';
 import { ElasticsearchService } from '../services/elasticsearch.service';
 import { CustomerSource } from 'src/app/customer';
-//import { sastrawijs } from 'node_modules/sastrawijs';
-//import { stopword } from 'node_modules/stopword';
 import { Stemmer, Tokenizer } from 'sastrawijs';
 import * as sw from 'stopword';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
 
-export interface FILE {
-  name: string;
-  filepath: string;
-  size: number;
-}
 
 @Component({
   selector: 'app-form-laporan',
@@ -192,7 +184,4 @@ export class FormLaporanPage implements OnInit {
     this.navCtrl.navigateRoot('/home/beranda');
     this.idUser = this.authService.userData.uid;
   }
-
-
-
 }
