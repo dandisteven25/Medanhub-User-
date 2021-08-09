@@ -32,7 +32,7 @@ export class FormLaporanPage implements OnInit {
   username2 = '';
   fullname2 = '';
   status = '';
-  idUser = '';
+  id_user = '';
   fotoProfil2 = '';
 
   user;
@@ -169,7 +169,7 @@ export class FormLaporanPage implements OnInit {
     const photoLaporan = await ref.getDownloadURL().toPromise();
 
     this.dbService.addLaporan({
-      userId: this.authService.userData.uid,
+      id_user: this.authService.userData.uid,
       fullname: this.fullname2,
       username: this.username2,
       tanggal: Date.now(),
@@ -181,11 +181,11 @@ export class FormLaporanPage implements OnInit {
       kelurahan: this.kelurahan,
       kecamatan: this.kecamatan,
       desBersih: this.queryText,
-      bobot: this.bobot,
+      // bobot: this.bobot,
       photo: photoLaporan,
       fotoUser: this.fotoProfil2,
     });
     this.navCtrl.navigateRoot('/home/beranda');
-    this.idUser = this.authService.userData.uid;
+    this.id_user = this.authService.userData.uid;
   }
 }

@@ -35,7 +35,7 @@ export class DatabaseService {
     this.loadingService.presentLoading();
     return this.firestore
       .collection('laporan', (ref) =>
-        ref.where('userId', '==', id).orderBy('tanggal', 'desc')
+        ref.where('id_user', '==', id).orderBy('tanggal', 'desc')
       )
       .snapshotChanges();
   }
