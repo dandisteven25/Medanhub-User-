@@ -56,7 +56,7 @@ export class EditProfilPage implements OnInit {
     await ref.putString(this.photo.substr(23),'base64',{ contentType: 'image/jpeg' })
     const photoProfil=await ref.getDownloadURL().toPromise()
 
-    this.dbService.update_user(this.authService.userData.uid, {fullname:this.fullname, username:this.username, fotoProfil: photoProfil})
+    this.dbService.update_user(this.authService.userData.uid, {fullname:this.fullname, username:this.username, foto_user: photoProfil})
     this.showAlert("Berhasil Update Profil")
     console.log("Berhasil Update Data")
     this.navCtrl.navigateRoot("/home/profil")

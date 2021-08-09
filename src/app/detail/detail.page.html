@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card-content>
     <div class="header">
-      <img [src]="user?.fotoUser" alt="Gambar User">
+      <img [src]="user?.foto_user" alt="Gambar User">
       <div class="header-tengah">
         <h5>{{user?.username}}</h5>
         <p>{{user?.alamat}} {{user?.kelurahan}} {{user?.kecamatan}}</p>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="img-conteiner">
-      <ion-img [src]="user?.photo"></ion-img>
+      <ion-img [src]="user?.gambar_laporan"></ion-img>
     </div>
     <div class="image-caption">
       <ion-label>{{user?.status}}</ion-label>

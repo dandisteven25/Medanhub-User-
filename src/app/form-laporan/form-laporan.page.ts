@@ -33,7 +33,6 @@ export class FormLaporanPage implements OnInit {
   fullname2 = '';
   status = '';
   id_user = '';
-  fotoProfil2 = '';
 
   user;
 
@@ -76,10 +75,9 @@ export class FormLaporanPage implements OnInit {
           console.log(this.user);
           this.username2 = this.user.username;
           this.fullname2 = this.user.fullname;
-          this.fotoProfil2 = this.user.fotoProfil;
           console.log(`Username : ${this.user.username}`);
           console.log(`Fullname : ${this.user.fullname}`);
-          console.log(`Foto Profil : ${this.user.fotoProfil}`);
+          console.log(`Foto Profil : ${this.user.foto_user}`);
         });
       });
     } catch (e) {
@@ -186,7 +184,7 @@ export class FormLaporanPage implements OnInit {
       desBersih: this.queryText,
       // bobot: this.bobot,
       gambar_laporan: photoLaporan,
-      foto_user: this.fotoProfil2,
+      foto_user: this.user.foto_user,
     });
     this.navCtrl.navigateRoot('/home/beranda');
     this.id_user = this.authService.userData.uid;

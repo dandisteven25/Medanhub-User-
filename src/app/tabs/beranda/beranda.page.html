@@ -12,14 +12,14 @@
     <div class="conteiner-content" style="border-bottom: 1px solid rgb(155, 155, 155);"
       (click)="gotoDetail(item['id'])">
       <div class="header">
-        <img [src]="item?.data?.fotoUser" alt="Gambar User">
+        <img [src]="item?.data?.foto_user" alt="Gambar User">
         <div class="header-tengah">
           <h5>{{item?.data?.username}}</h5>
         </div>
       </div>
 
       <div class="img-conteiner">
-        <ion-img [src]="item?.data?.photo"></ion-img>
+        <ion-img [src]="item?.data?.gambar_laporan"></ion-img>
       </div>
       <div class="image-caption">
         <ion-label>{{item?.data?.status}}</ion-label>
