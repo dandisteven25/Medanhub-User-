@@ -171,7 +171,7 @@ export class FormLaporanPage implements OnInit {
     this.dbService.addLaporan({
       id_laporan: id_laporan,
       id_user: this.authService.userData.uid,
-      fullname: this.fullname2,
+      // fullname: this.fullname2,
       username: this.username2,
       tanggal: Date.now(),
       nama_kategori: this.kategori,
