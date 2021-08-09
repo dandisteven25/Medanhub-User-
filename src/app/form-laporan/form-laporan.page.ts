@@ -168,7 +168,10 @@ export class FormLaporanPage implements OnInit {
     });
     const photoLaporan = await ref.getDownloadURL().toPromise();
 
+    let id_laporan = this.dbService.laporanId;
+
     this.dbService.addLaporan({
+      id_laporan: id_laporan,
       id_user: this.authService.userData.uid,
       fullname: this.fullname2,
       username: this.username2,
@@ -182,8 +185,8 @@ export class FormLaporanPage implements OnInit {
       kecamatan: this.kecamatan,
       desBersih: this.queryText,
       // bobot: this.bobot,
-      photo: photoLaporan,
-      fotoUser: this.fotoProfil2,
+      gambar_laporan: photoLaporan,
+      foto_user: this.fotoProfil2,
     });
     this.navCtrl.navigateRoot('/home/beranda');
     this.id_user = this.authService.userData.uid;
