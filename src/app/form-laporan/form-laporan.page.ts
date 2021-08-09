@@ -169,7 +169,7 @@ export class FormLaporanPage implements OnInit {
     let id_laporan = this.dbService.laporanId;
 
     this.dbService.addLaporan({
-      id_laporan: id_laporan,
+      // id_laporan: id_laporan,
       id_user: this.authService.userData.uid,
       // fullname: this.fullname2,
       username: this.username2,
