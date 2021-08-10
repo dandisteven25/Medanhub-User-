@@ -28,11 +28,13 @@ export class FormLaporanPage implements OnInit {
   kelurahan = '';
   kecamatan = '';
   kategori = [];
-  nama_layanan = [];
+  layanan = [];
   username2 = '';
   fullname2 = '';
   status = '';
   id_user = '';
+  nama_kategori = '';
+  nama_layanan = '';
 
   user;
 
@@ -131,18 +133,32 @@ export class FormLaporanPage implements OnInit {
         )
         .then(
           (response) => {
-            this.customerSources = response.hits.hits[0]._source.nama_kategori;
-            this.kategori = this.customerSources;
+            // this.customerSources = response.hits.hits[0]._source.nama_kategori;
+            // this.kategori = this.customerSources;
+            this.kategori = response.hits.hits[0]._source.nama_kategori;
             console.log(this.kategori);
 
-            this.customerSources = response.hits.hits[0]._source.nama_layanan;
-            this.nama_layanan = this.customerSources;
-            console.log(this.nama_layanan);
+            // this.customerSources = response.hits.hits[0]._source.nama_layanan;
+            // this.nama_layanan = this.customerSources;
+            this.layanan = response.hits.hits[0]._source.nama_layanan;
+            console.log(this.layanan);
             this.bobot = response.hits.hits[0]._score;
 
-            console.log(response);
+            if (this.kategori.length === 0 || this.queryText === '') {
+              this.status = 'Tidak Dapat Ditangani';
+              this.kategori = [];
+              this.layanan = [];
+            } else {
+              this.nama_kategori = this.kategori.toString();
+              this.nama_layanan = this.layanan.toString();
+              this.status = 'Menunggu Penanganan';
+            }
+
+            // console.log(response);
           },
           (error) => {
+            this.nama_kategori = '';
+            this.nama_layanan = '';
             console.error(error);
           }
         )
@@ -154,9 +170,13 @@ export class FormLaporanPage implements OnInit {
   }
 
   async kirimLaporan() {
-    if (this.kategori.length === 0) {
+    if (this.kategori.length === 0 || this.queryText === '') {
       this.status = 'Tidak Dapat Ditangani';
+      this.nama_kategori = '';
+      this.nama_layanan = '';
     } else {
+      this.nama_kategori = this.kategori.toString();
+      this.nama_layanan = this.layanan.toString();
       this.status = 'Menunggu Penanganan';
     }
 
@@ -166,7 +186,7 @@ export class FormLaporanPage implements OnInit {
     });
     const photoLaporan = await ref.getDownloadURL().toPromise();
 
-    let id_laporan = this.dbService.laporanId;
+    // let id_laporan = this.dbService.laporanId;
 
     this.dbService.addLaporan({
       // id_laporan: id_laporan,
@@ -174,7 +194,7 @@ export class FormLaporanPage implements OnInit {
       // fullname: this.fullname2,
       username: this.username2,
       tanggal: Date.now(),
-      nama_kategori: this.kategori,
+      nama_kategori: this.nama_kategori,
       nama_layanan: this.nama_layanan,
       status: this.status,
       deskripsi: this.deskripsi,
