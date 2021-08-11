@@ -6,7 +6,7 @@
 
 <ion-content class="ion-padding">
 
-  <img [src]="user?.foto_user" alt="Missing Image" onError="src = '/assets/person2.png'" >
+  <img [src]="user?.foto_user" alt="Missing Image" onError="src = '/assets/person2.png'">
 
   <h5>{{user?.fullname}}</h5>
   <p>{{user?.username}}</p>
@@ -33,9 +33,9 @@
     </ion-item>
 
     <ion-item (click)="signOut()">
-      <ion-icon slot="start" name="log-out-outline" class="icon-item"></ion-icon>
-      <ion-label>Keluar</ion-label>
-      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      <ion-icon slot="start" name="log-out-outline" class="icon-item" color="danger"></ion-icon>
+      <ion-label color="danger">Keluar</ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline" color="danger"></ion-icon>
     </ion-item>
   </div>
 

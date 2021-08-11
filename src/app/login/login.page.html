@@ -1,25 +1,24 @@
  <div class="logo">
-  <img src="assets/logo2.png">
-</div>
+   <img src="assets/logo2.png">
+ </div>
 
-<div class="content ion-padding">
-  <h4><b>Masuk</b></h4>
+ <div class="content ion-padding">
+   <h4><b>Masuk</b></h4>
 
-  <div class="inputLogin ion-padding">
-    <ion-item class="input">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" [(ngModel)]="email" class="ion-text-lowercase" autocapitalize="off" autocomplete="email" required></ion-input>
-    </ion-item>
+   <div class="inputLogin ion-padding">
+     <ion-item class="input">
+       <ion-label position="floating">Email</ion-label>
+       <ion-input type="email" [(ngModel)]="email" class="ion-text-lowercase" autocapitalize="off" autocomplete="email"
+         required></ion-input>
+     </ion-item>
 
-    <ion-item class="input">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password" required></ion-input>
-    </ion-item>
-  </div>
-  <div class="footer">
-    <ion-button (click)="login()">MASUK</ion-button>
-    <p style="color: black;">Belum Punya Akun? <a href="/daftar" class="login">Daftar</a></p>
-  </div>
-</div>
-
-
+     <ion-item class="input">
+       <ion-label position="floating">Password</ion-label>
+       <ion-input type="password" [(ngModel)]="password" required></ion-input>
+     </ion-item>
+   </div>
+   <div class="footer">
+     <ion-button (click)="login()" style="color: white;">MASUK</ion-button>
+     <p style="color: black;">Belum Punya Akun? <a href="/daftar" class="login">Daftar</a></p>
+   </div>
+ </div>

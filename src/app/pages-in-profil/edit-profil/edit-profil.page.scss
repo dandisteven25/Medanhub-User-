@@ -1,40 +1,39 @@
-ion-toolbar{
-  --background:white;
+ion-toolbar {
+  --background: white;
   padding-bottom: 0;
   margin-bottom: 0;
   color: black;
 
-  ion-icon{
+  ion-icon {
     margin-left: 15px;
     margin-right: 0;
     width: 20px;
     height: 20px;
   }
 
-  ion-title{
+  ion-title {
     margin-left: 10px;
     padding-left: 0;
   }
 }
-ion-header{
+ion-header {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-ion-content{
+ion-content {
   text-align: center;
-  --background:white;
+  --background: white;
 
-  img{
+  img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
     margin-top: 50px;
     margin-bottom: 0;
-
   }
 
-  .edit-foto{
+  .edit-foto {
     display: flex;
     width: 25%;
     margin: 0 auto;
@@ -42,28 +41,28 @@ ion-content{
     padding-top: 0;
     border: 1px solid red;
 
-    .button-foto{
+    .button-foto {
       width: 50px;
       height: 50px;
       color: #219653;
       margin-top: 0;
-      padding: 0 ;
+      padding: 0;
     }
-    .button-foto:last-child{
+    .button-foto:last-child {
       margin-left: 15px;
     }
   }
 
-  ion-list{
+  ion-list {
     margin-top: 40px;
-    ion-item{
-      ion-label{
+    ion-item {
+      ion-label {
         color: grey;
       }
     }
   }
 
-  ion-button{
+  ion-button {
     width: 100%;
     height: 50px;
     margin-top: 40px;
@@ -72,13 +71,21 @@ ion-content{
   }
 }
 
-ion-grid{
+ion-grid {
   color: #219653;
 
-    ion-icon{
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      margin: 0;
-    }
+  ion-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.foto-user {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0;
+  margin: 0;
 }

@@ -10,7 +10,7 @@
 
   <p>Nama Pengguna</p>
   <ion-item lines="inset">
-    <ion-label>{{user?.fullname}}</ion-label>
+    <ion-label>{{user?.username}}</ion-label>
   </ion-item>
 
   <p>No Hp</p>
@@ -30,8 +30,8 @@
 
   <h5 style="margin-top: 30px;">Lanjutan</h5>
   <ion-item (click)="deleteAccount()">
-    <ion-label style="color: black;">Hapus Akun</ion-label>
-    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    <ion-label style="color: red;">Hapus Akun</ion-label>
+    <ion-icon slot="end" name="chevron-forward-outline" color="danger"></ion-icon>
   </ion-item>
 
 </ion-content>

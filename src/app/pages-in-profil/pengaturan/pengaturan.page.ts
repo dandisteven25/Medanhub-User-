@@ -9,34 +9,40 @@ import { DatabaseService } from 'src/app/services/database/database.service';
   styleUrls: ['./pengaturan.page.scss'],
 })
 export class PengaturanPage implements OnInit {
-  user
+  user;
 
-  constructor(private alert: AlertController ,private dbService: DatabaseService, private authService: AuthService, private navCtrl: NavController) { }
+  constructor(
+    private alert: AlertController,
+    private dbService: DatabaseService,
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {}
 
   ngOnInit() {
-    console.log(this.authService.userData)
-    try{
-      this.authService.checkAuthState().subscribe(data=>{
-        this.dbService.getUser(data.uid).subscribe((data)=>{
-          this.user = data.payload.data()
-          console.log(this.user)
-        })
-      })
-    }catch(e){console.log(e)};
+    console.log(this.authService.userData);
+    try {
+      this.authService.checkAuthState().subscribe((data) => {
+        this.dbService.getUser(data.uid).subscribe((data) => {
+          this.user = data.payload.data();
+          console.log(this.user);
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
-  deleteAccount(){
-    this.dbService.delete_user(this.authService.userData.uid)
-    this.showAlert("Berhasil Delete Account")
-    console.log("Berhasil Delete Account")
-    this.navCtrl.navigateRoot("/login")
+  deleteAccount() {
+    this.dbService.delete_user(this.authService.userData.uid);
+    this.showAlert('Berhasil Delete Account');
+    console.log('Berhasil Delete Account');
+    this.navCtrl.navigateRoot('/login');
   }
 
-  async showAlert(message:string){
+  async showAlert(message: string) {
     const alert = await this.alert.create({
-      message
+      message,
     });
-    await alert.present()
+    await alert.present();
   }
-
 }

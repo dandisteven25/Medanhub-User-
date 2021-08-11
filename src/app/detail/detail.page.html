@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card-content>
     <div class="header">
-      <img [src]="user?.foto_user" alt="Gambar User">
+      <img [src]="user?.foto_user" alt="Gambar User" class="foto-user">
       <div class="header-tengah">
         <h5>{{user?.username}}</h5>
         <p>{{user?.alamat}}, {{user?.kelurahan}}, {{user?.kecamatan}}</p>
@@ -29,5 +29,5 @@
     </div>
   </ion-card-content>
 
-  <ion-button (click)="hapusLaporan()" class="button-hapus" expand="block">Hapus Laporan</ion-button>
+  <ion-button (click)="hapusLaporan()" class="button-hapus" expand="block" color="danger">Hapus Laporan</ion-button>
 </ion-content>
