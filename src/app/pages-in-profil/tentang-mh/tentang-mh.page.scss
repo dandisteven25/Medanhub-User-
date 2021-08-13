@@ -1,36 +1,36 @@
-ion-toolbar{
-  --background:white;
+ion-toolbar {
+  --background: white;
   padding-bottom: 0;
   margin-bottom: 0;
 
-  ion-icon{
+  ion-icon {
     margin-left: 15px;
     margin-right: 0;
     width: 20px;
     height: 20px;
   }
 
-  ion-title{
+  ion-title {
     margin-left: 10px;
     padding-left: 0;
   }
 }
-ion-header{
+ion-header {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-ion-content{
+ion-content {
   text-align: center;
 
-  img{
-    width: 170px;
-    height: 77px;
-    margin-top: 10%;
-    margin-bottom: 5px;
+  img {
+    width: 240px;
+    height: 240px;
+    margin-top: 0%;
+    margin-bottom: 0px;
   }
 
-  p{
+  p {
     font-weight: bold;
     margin-top: 0;
   }

@@ -4,7 +4,7 @@
 
     <ion-tab-button tab="beranda">
       <ion-icon name="home"></ion-icon>
-      <ion-label>Beranda</ion-label>
+      <ion-label>Laporan</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="notifikasi">
@@ -22,21 +22,20 @@
 </ion-tabs>
 
 <div class="fab">
-<ion-fab edge slot="fixed" horizontal="end">
-  <ion-fab-button>
-    <ion-icon name="add"></ion-icon>
-    <p>Lapor</p>
-  </ion-fab-button>
-  <ion-fab-list side="top" >
-    <ion-fab-button (click)="takePicture()">
-      <ion-icon name="camera"></ion-icon>
+  <ion-fab edge slot="fixed" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+      <p>Lapor</p>
     </ion-fab-button>
-  </ion-fab-list>
-  <ion-fab-list side="start" >
-    <ion-fab-button (click)="takeGallery()">
-      <ion-icon name="images-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab-list>
-</ion-fab>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button (click)="takeGallery()">
+        <ion-icon name="images-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </div>
-

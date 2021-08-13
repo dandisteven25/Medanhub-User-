@@ -1,4 +1,4 @@
-.logo{
+.logo {
   background: #219653;
   width: 100%;
   height: 250px;
@@ -6,39 +6,39 @@
   padding-bottom: 100px;
 }
 .logo img {
-  width: 180px;
-  height: 80px;
-  margin-top: 40px;
+  width: 240px;
+  height: 240px;
+  margin-top: 0px;
 }
 
-.content{
+.content {
   position: absolute;
-  margin-top: 150px;
+  margin-top: 200px;
   background: white;
   width: 100%;
   height: 100%;
-  border-radius:40px 40px 0 0;
+  border-radius: 40px 40px 0 0;
 
-  h4{
+  h4 {
     text-align: center;
-    color:black;
+    color: black;
   }
 
-  .footer{
+  .footer {
     width: 100%;
     color: rgb(238, 211, 211);
-    --background:white;
+    --background: white;
     text-align: center;
 
-    ion-button{
+    ion-button {
       width: 90%;
       height: 50px;
       --background: #219653;
-      color:black;
+      color: black;
       --border-radius: 20px;
     }
 
-    .login{
+    .login {
       text-decoration: none;
       color: #219653;
       padding-bottom: 0px;
@@ -47,22 +47,21 @@
   }
 }
 
-.inputLogin{
+.inputLogin {
   margin-top: 20px;
   width: 100%;
   text-align: center;
   margin: 0 auto;
 
-  .input{
-    --background:#f2f2f2;
+  .input {
+    --background: #f2f2f2;
     margin-bottom: 15px;
     color: black;
-    border-radius:10px;
+    border-radius: 10px;
     width: 100%;
 
-    ion-label{
+    ion-label {
       color: grey;
     }
   }
 }
-
