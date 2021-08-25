@@ -11,6 +11,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class DetailPage implements OnInit {
   user;
+  buttonDisabled;
+  status;
 
   constructor(
     private dbService: DatabaseService,
@@ -22,8 +24,15 @@ export class DetailPage implements OnInit {
   ngOnInit() {
     let idLaporan = this.dbService.laporanId;
     this.dbService.getDetailLaporan(idLaporan).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.user = data;
+      this.status = this.user.status;
+      // console.log(this.status);
+      if (this.status === 'Selesai' || this.status === 'Sedang Ditangani') {
+        this.buttonDisabled = true;
+      } else {
+        this.buttonDisabled = false;
+      }
     });
   }
 

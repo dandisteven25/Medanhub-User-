@@ -8,12 +8,13 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list  *ngFor="let item of user">
+  <ion-list *ngFor="let item of user">
     <ion-item (click)="gotoDetail(item['id'])">
       <ion-thumbnail slot="start">
         <ion-img [src]="item?.data?.foto_user"></ion-img>
       </ion-thumbnail>
       <ion-label>{{item?.data?.deskripsi}}</ion-label>
+      <ion-text>{{item?.data?.tanggal | date:"dd/MM/yy"}}</ion-text>
     </ion-item>
   </ion-list>
 

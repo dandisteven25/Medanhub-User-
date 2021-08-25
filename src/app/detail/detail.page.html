@@ -25,9 +25,10 @@
       <p class="kategori">Kategori : {{user?.nama_kategori}}</p>
       <p class="kategori">Ditangani oleh : {{user?.nama_layanan}}</p>
       <p class="deskripsi">{{user?.deskripsi}}</p>
-      <p style="font-size: 10px;">{{user?.tanggal | date:'fullDate'}}</p>
+      <p style="font-size: 10px;">{{user?.tanggal | date:'EEEE, dd MMMM yyyy' }}</p>
     </div>
   </ion-card-content>
 
-  <ion-button (click)="hapusLaporan()" class="button-hapus" expand="block" color="danger">Hapus Laporan</ion-button>
+  <ion-button (click)="hapusLaporan()" class="button-hapus" expand="block" color="danger" disabled={{buttonDisabled}}>
+    Hapus Laporan</ion-button>
 </ion-content>
