@@ -87,6 +87,7 @@ export class ElasticsearchService {
         'hits.total',
         '_scroll_id',
         'hits.hits._score',
+        // 'hits.hits._explanation',
       ],
       body: {
         query: {
@@ -94,6 +95,7 @@ export class ElasticsearchService {
             [_field]: _queryText,
           },
         },
+        explain: true,
         size: 1,
       },
       _source: ['id', 'nama_kategori', 'nama_layanan', 'deskripsi'],

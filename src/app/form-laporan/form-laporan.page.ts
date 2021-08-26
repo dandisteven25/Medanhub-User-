@@ -39,6 +39,11 @@ export class FormLaporanPage implements OnInit {
   user;
 
   bobot;
+  // bobotKata = [];
+  // penjelasan;
+  // tf;
+  // boost;
+  // idf;
 
   customerSources: CustomerSource[];
   private queryText = '';
@@ -141,11 +146,22 @@ export class FormLaporanPage implements OnInit {
             // this.customerSources = response.hits.hits[0]._source.nama_layanan;
             // this.nama_layanan = this.customerSources;
             this.layanan = response.hits.hits[0]._source.nama_layanan;
-            console.log(this.layanan);
             this.bobot = response.hits.hits[0]._score;
+            // this.penjelasan = response.hits.hits[0]._explanation.details[1];
+
+            // this.penjelasan = response.hits.hits[0]._explanation.details;
+            // var panjang = this.penjelasan.length;
+            // for (var i = 0; i < panjang; i++) {
+            //   this.bobotKata[i] = this.penjelasan[i].value;
+            // }
+
+            // this.boost = this.penjelasan[0].value;
+            // this.tf = this.penjelasan[1].value;
+            // this.idf = this.penjelasan[2].value;
 
             if (this.kategori.length === 0 || this.queryText === '') {
               this.status = 'Tidak Dapat Ditangani';
+              console.log(this.status);
               this.kategori = [];
               this.layanan = [];
             } else {
@@ -159,7 +175,7 @@ export class FormLaporanPage implements OnInit {
           (error) => {
             this.nama_kategori = '';
             this.nama_layanan = '';
-            console.error(error);
+            console.log('error');
           }
         )
         .then(() => {
@@ -202,7 +218,17 @@ export class FormLaporanPage implements OnInit {
       kelurahan: this.kelurahan,
       kecamatan: this.kecamatan,
       desBersih: this.queryText,
-      // bobot: this.bobot,
+      total_bobot: this.bobot,
+      // penjelasan: {
+      //   total_bobot: this.bobot,
+      //   bobot_kata: this.bobotKata,
+      // },
+      // pembuktian: {
+      //   total_bobot: this.bobot,
+      //   nilai_boost: this.boost,
+      //   nilai_tf: this.tf,
+      //   nilai_idf: this.idf,
+      // },
       gambar_laporan: photoLaporan,
       foto_user: this.user.foto_user,
     });
